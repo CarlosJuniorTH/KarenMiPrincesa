@@ -4,9 +4,9 @@ var a = c.getContext('2d');
 
 window.requestAnimFrame = (function(){
     return window.requestAnimationFrame || 
-        window.webkitRequestAnimationFrame || 
+    window.webkitRequestAnimationFrame || 
     function( callback ){
-        window.setTimeout(callback, 1000 / 60);
+    window.setTimeout(callback, 1000 / 60);
     };
 })();
 
@@ -17,9 +17,9 @@ b.onmousemove = function(e){
 
 b.onclick = function(e){
     for(l = 600;l--;) {
-        v=g[l];
-        v.x=m;
-        v.y=y;
+    v=g[l];
+    v.x=m;
+    v.y=y;
     }
 }
 
@@ -62,46 +62,46 @@ function render() {
 
 
     var e = g.length; while(e--){
-        var p = g[e]
-        p.a += Math.random() > .5 ? -1 : 1
-        p.b -= (p.b - p.a) * .05
-        var m = p.b * 8
-        p.x += Math.cos(m / 180 * Math.PI)
-        p.y += Math.sin(m / 180 * Math.PI)
+    var p = g[e]
+    p.a += Math.random() > .5 ? -1 : 1
+    p.b -= (p.b - p.a) * .05
+    var m = p.b * 8
+    p.x += Math.cos(m / 180 * Math.PI)
+    p.y += Math.sin(m / 180 * Math.PI)
 
-        xd = p.x - w/2;
-        yd = p.y - h/2;
+    xd = p.x - w/2;
+    yd = p.y - h/2;
 
-        distance = Math.sqrt(xd*xd + yd*yd);
+    distance = Math.sqrt(xd*xd + yd*yd);
 
-        var changeVal = heartPixelData[((~~p.x + (~~p.y * w)) * 4) - 1]
+    var changeVal = heartPixelData[((~~p.x + (~~p.y * w)) * 4) - 1]
 
-        if(p.p !== changeVal){
-           p.op = .01
-        }
+    if(p.p !== changeVal){
+    p.op = .01
+    }
 
-        p.op += p.op < .5 ? .02:0
-        
-        col = col < 0 ? 0 : col - 0.001
+    p.op += p.op < .5 ? .02:0
+    
+    col = col < 0 ? 0 : col - 0.001
 
-        if(changeVal){
-            d.fillStyle = "rgba(255,0,0,"+p.op+")"
-        } else {
-            d.fillStyle = "rgba(255,255,255,"+p.op+")"
-        }
-        
+    if(changeVal){
+    d.fillStyle = "rgba(255,0,0,"+p.op+")"
+    } else {
+    d.fillStyle = "rgba(255,255,255,"+p.op+")"
+    }
+    
 
-        p.p = changeVal
+    p.p = changeVal
 
 
-        if(p.x > w + f) p.x = -f
-        if(p.x < -f) p.x = w + f
-        if(p.y > h + f) p.y = -f
-        if(p.y < -f) p.y = h + f
+    if(p.x > w + f) p.x = -f
+    if(p.x < -f) p.x = w + f
+    if(p.y > h + f) p.y = -f
+    if(p.y < -f) p.y = h + f
 
-        // d.fillStyle = "rgba(255, 0, 0, 0.2)";
-        a.font = (distance < f*(f/4) ? (distance / (f/4)) >> 0 || 1 : f) + 'px Arial';
-        d.fillText('❤',~~p.x,~~p.y)
+    // d.fillStyle = "rgba(255, 0, 0, 0.2)";
+    a.font = (distance < f*(f/4) ? (distance / (f/4)) >> 0 || 1 : f) + 'px Arial';
+    d.fillText('❤',~~p.x,~~p.y)
     }
 }
 
